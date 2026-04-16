@@ -11,7 +11,7 @@ interface Props {
   onReadingSaved: (interpretation: string) => void;
 }
 
-const API_BASE = import.meta.env.VITE_BACKEND_URL ?? '';
+const API_BASE = (window as Window & { BACKEND_URL?: string }).BACKEND_URL ?? '';
 
 async function fetchInterpretation(question: string, cards: SelectedCard[]): Promise<string> {
   const response = await fetch(`${API_BASE}/api/reading`, {
