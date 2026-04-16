@@ -11,8 +11,10 @@ interface Props {
   onReadingSaved: (interpretation: string) => void;
 }
 
+const API_BASE = import.meta.env.VITE_BACKEND_URL ?? '';
+
 async function fetchInterpretation(question: string, cards: SelectedCard[]): Promise<string> {
-  const response = await fetch('/api/reading', {
+  const response = await fetch(`${API_BASE}/api/reading`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

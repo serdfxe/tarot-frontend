@@ -10,7 +10,7 @@ interface Props {
 async function fetchCardMeaning(card: TarotCard): Promise<string> {
   const today = new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
 
-  const response = await fetch('/api/card-of-day', {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND_URL ?? ''}/api/card-of-day`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
